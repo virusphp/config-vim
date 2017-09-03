@@ -1,0 +1,143 @@
+:set number
+
+filetype plugin indent on     " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+
+" All of your Plugins must be added before the following line
+" VIM PLUGIN
+" =================================================
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Bundle 'edkolev/promptline.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'tomasr/molokai'
+Plugin 'elzr/vim-json'
+Plugin 'honza/vim-snippets'
+Plugin 'kien/ctrlp.vim'
+Plugin 'mhinz/vim-signify'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'mattn/emmet-vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'crusoexia/vim-monokai'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'tpope/vim-vinegar'
+
+" =================================================
+call vundle#end()            " required
+
+"CONFIGURASI VIM
+
+" Config Airline
+let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
+
+" Vim PowerLine
+let g:airline_powerline_fonts = 1
+let g:Powerline_symbols = 'fancy'
+
+"Status line
+set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+
+" Always show statusline
+set laststatus=2
+
+" Use color 256( use this jika terminal support warna tsb
+set t_Co=256
+
+" Statusline use wide installation
+set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+
+" Set Theme base16_chalk
+let g:airline_theme = 'base16_chalk'
+
+" Setting smarter tab line
+" let g:airline#themes#molokai#palette= {}
+
+" Setting Powerline biar oke
+set encoding=utf-8
+set fillchars+=stl:\ ,stlnc:\
+
+" Setting Font
+set guifont=DejaVu\ Sans:s12
+
+" configurasi Emmet ke ctrl+space
+let g:user_emmet_mode='a'
+" let g:user_emmet_install_global = 0
+" autocmd FileType html,php,css EmmetInstall
+let g:user_emmet_leader_key='<C-Space>'
+let g:user_emmet_expandabbr_key='<C-Space>'
+
+"configurasi YouCompleteMe ingore <tab>
+" let g:UltiSnipsExpandTrigger="<tab"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackWardTrigger="<c-z>"
+" autocmd FileType js UltiSnipsAddFiletypes javascript-node
+" inoremap <expr> <CR>pumvisible() ? "\<C-Y>" : "\<CR>"
+" let g:ycm_key_list_select_completion = ['<TAB>']
+" let g:ycm_key_list_previous_completion = ['<S-TAB']
+" let g:ycm_key_list_stop_completion = ['<c-y>', '<UP>', '<DOWN>']
+"let g:ycm_key_list_select_completion = []
+"let g:ycm_key_list_previous_completion = []
+"function! OmniPopup(action)
+"	if pumvisible()
+"		if a:action == 'j'
+"			return "\<Down"
+"		elseif a:action == 'k'
+" 			return "\<Up>"
+"		endif
+"	endif
+"	return a:action
+" endfunction
+" Remove Tab dari list
+" let g:ycm_key_list_select_completion = ['<Down>']
+
+" COLORSCHEME Monokai
+syntax enable
+colorscheme monokai
+set termguicolors
+
+set showmatch
+" show existing tab with 4 space width
+set tabstop=3
+set softtabstop=3
+" when indenting with '>', use 4 spaces width
+set shiftwidth=3
+" On pressing tab, insert 4 spaces
+set expandtab
+set smartindent
+set autoindent
+set backspace=indent,eol,start
+autocmd FileType php setlocal shiftwidth=4 tabstop=4
+
+"setting paste
+":set paste
+:set ignorecase
+
+" Setting NERDTREE
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimENter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+let g:NERDTreeShowHidden=1
+nmap <C-h> <C-w><C-h>
+nmap <C-j> <C-w><C-j>
+nmap <C-k> <C-w><C-k>
+nmap <C-l> <C-w><C-l>
+let NERDTreeHijackNetrw = 0
+
+" setting leader command
+let mapleader = ","
+nmap <Leader>f :bn<cr>
+nmap <Leader>d :bn<cr>
+nmap <Leader>s :bd<cr>
+
